@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @property.name %>
+</p>
+
+<p>
+  <strong>Rent:</strong>
+  <%= @property.rent %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @property.address %>
+</p>
+
+<p>
+  <strong>Age:</strong>
+  <%= @property.age %>
+</p>
+
+
+<p>
+  <strong>Note:</strong>
+  <%= @property.note %>
+</p>
+
+  <% @property.local_stations.each do |local_station| %>
+<p>
+  <strong>Line:</strong>
+    <%= local_station.line %>
+</p>
+
+<p>
+  <strong>Station:</strong>
+    <%= local_station.station %>
+</p>
+
+<p>
+  <strong>Distance:</strong>
+    <%= local_station.distance %>
+</p>
+
+<% end %>
+<%= link_to 'Edit', edit_property_path(@property) %> |
+<%= link_to 'Back', properties_path %>
