@@ -1,10 +1,11 @@
 class PropertiesController < ApplicationController
   before_action :set_property, only: %i[ show edit update destroy ]
-
+  
   # GET /properties or /properties.json
   def index
     @properties = Property.all
     @local_stations = LocalStation.all
+    n = 0
   end
 
   # GET /properties/1 or /properties/1.json

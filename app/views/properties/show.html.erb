@@ -26,22 +26,22 @@
   <%= @property.note %>
 </p>
 
-  <% @property.local_stations.each do |local_station| %>
-<p>
-  <strong>Line:</strong>
-    <%= local_station.line %>
-</p>
+<% @property.local_stations.each.with_index do |local_station, i| %>
+   <h3><strong>最寄駅<%= "#{i + 1}" %></strong></h3>
+    <p>
+      <strong>Line:</strong>
+        <%= local_station.line %>
+    </p>
 
-<p>
-  <strong>Station:</strong>
-    <%= local_station.station %>
-</p>
+    <p>
+      <strong>Station:</strong>
+        <%= local_station.station %>
+    </p>
 
-<p>
-  <strong>Distance:</strong>
-    <%= local_station.distance %>
-</p>
-
+    <p>
+      <strong>Distance:</strong>
+        <%= local_station.distance %>
+    </p>
 <% end %>
 <%= link_to 'Edit', edit_property_path(@property) %> |
 <%= link_to 'Back', properties_path %>
