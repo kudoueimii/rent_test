@@ -4,8 +4,6 @@ class PropertiesController < ApplicationController
   # GET /properties or /properties.json
   def index
     @properties = Property.all
-    @local_stations = LocalStation.all
-    n = 0
   end
 
   # GET /properties/1 or /properties/1.json
@@ -20,6 +18,7 @@ class PropertiesController < ApplicationController
 
   # GET /properties/1/edit
   def edit
+    1.times{@property.local_stations.build}
   end
 
   # POST /properties or /properties.json
