@@ -10,8 +10,6 @@ class PropertiesController < ApplicationController
 
   # GET /properties/1 or /properties/1.json
   def show
-    # @property = Property.find(property_params[:id])
-    # @local_station = LocalStation.find(local_station_params[:id])
   end
 
   # GET /properties/new
@@ -22,7 +20,6 @@ class PropertiesController < ApplicationController
 
   # GET /properties/1/edit
   def edit
-    @property.local_stations.build
   end
 
   # POST /properties or /properties.json
@@ -30,6 +27,9 @@ class PropertiesController < ApplicationController
     @property = Property.new(property_params)
     respond_to do |format|
       if @property.save
+        LocalStation.where("line=='' OR station=='' OR distance == NULL").each do |station|
+          station.destroy
+        end
         format.html { redirect_to @property, notice: "Property was successfully created." }
         format.json { render :show, status: :created, location: @property }
       else
@@ -44,6 +44,9 @@ class PropertiesController < ApplicationController
     @property.local_stations.build
     respond_to do |format|
       if @property.update(property_params)
+        LocalStation.where("line=='' OR station=='' OR distance == NULL").each do |station|
+          station.destroy
+        end
         format.html { redirect_to @property, notice: "Property was successfully updated." }
         format.json { render :show, status: :ok, location: @property }
       else

@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Properties</h1>
+<h1>一覧</h1>
 
 <table>
   <thead>
@@ -15,8 +15,8 @@
   </thead>
   <tbody>
 
+      <h4>最寄駅</h4>
     <% @properties.each do |property| %>
-      <h4>最寄駅#{n}</h4>
       <tr>
         <td><%= property.name %></td>
         <td><%= property.rent %></td>
